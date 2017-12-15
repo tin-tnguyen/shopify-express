@@ -79,13 +79,15 @@ module.exports = function createShopifyAuthRouter({
     })
       .then(remoteResponse => remoteResponse.json())
       .then(responseBody => {
+        console.error('🔴 Error getting token ' + responseBody);
+        console.error('🔴 Error getting token ' + responseBody.access_token);
         const accessToken = responseBody.access_token;
-        console.error('🔴 Error getting token ' + requestBody , responseBody);
+
         shopStore.storeShop({ accessToken, shop }, (err, token) => {
           if (err) {
             console.error('🔴 Error storing shop access token', err);
           }
-
+          console.error('🔴 ##################  ' + request);
           request.session.accessToken = accessToken;
           request.session.shop = shop;
           afterAuth(request, response);
