@@ -42,6 +42,7 @@ module.exports = function createShopifyAuthRouter({
   // The redirect from Shopify contains the authorization_code query parameter,
   // which the app exchanges for an access token
   router.get('/callback', (request, response) => {
+    console.log("@@@@@@@@@@@@ " + request.session)
     const { query } = request;
     const { code, hmac, shop } = query;
 
