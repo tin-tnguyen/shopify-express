@@ -11,7 +11,8 @@ module.exports = function createRouter(shopifyConfig) {
   router.use(bodyParser.urlencoded({ extended: true }));
 
   router.use('/auth/shopify', rawParser, createShopifyAuthRouter(shopifyConfig));
-  router.use('/', rawParser, createShopifyAuthRouter(shopifyConfig));
+  router.use('/install', rawParser, createShopifyAuthRouter(shopifyConfig));
+  router.use('/callback', rawParser, createShopifyAuthRouter(shopifyConfig));
   console.log("test ok")
   router.use(
     '/api',
