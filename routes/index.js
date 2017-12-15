@@ -8,7 +8,7 @@ const shopifyApiProxy = require('./shopifyApiProxy');
 module.exports = function createRouter(shopifyConfig) {
   const router = express.Router();
   const rawParser = bodyParser.raw({ type: '*/*' });
-  rawParser.use(bodyParser.urlencoded({ extended: false }));
+  router.use(bodyParser.urlencoded({ extended: false }));
 
   router.use('/auth/shopify', rawParser, createShopifyAuthRouter(shopifyConfig));
   router.use('/', rawParser, createShopifyAuthRouter(shopifyConfig));
