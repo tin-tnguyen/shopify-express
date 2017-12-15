@@ -88,6 +88,7 @@ module.exports = function createShopifyAuthRouter({
             console.error('🔴 Error storing shop access token', err);
           }
           console.error('🔴 ##################  ' + request);
+          console.error('🔴 ##################1111  ' + accessToken);
           request.session.accessToken = accessToken;
           request.session.shop = shop;
           afterAuth(request, response);
