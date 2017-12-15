@@ -9,7 +9,7 @@ module.exports = function createRouter(shopifyConfig) {
   const router = express.Router();
   const rawParser = bodyParser.raw({ type: '*/*' });
 
-  router.use('/auth/shopify', createShopifyAuthRouter(shopifyConfig));
+  router.use('/auth/shopify', rawParser, createShopifyAuthRouter(shopifyConfig));
   router.use(
     '/api',
     rawParser,
