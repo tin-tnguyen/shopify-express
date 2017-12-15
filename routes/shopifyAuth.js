@@ -43,6 +43,7 @@ module.exports = function createShopifyAuthRouter({
   // which the app exchanges for an access token
   router.get('/callback', (request, response) => {
     console.log("@@@@@@@@@@@@ " + request.session)
+    console.log("@@@@@@@@@@@@ " + request)
     const { query } = request;
     const { code, hmac, shop } = query;
 
