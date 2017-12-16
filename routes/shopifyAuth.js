@@ -18,7 +18,7 @@ module.exports = function createShopifyAuthRouter({
 
   router.use(bodyParser.json())
   // This function initializes the Shopify OAuth Process
-  router.get('/', rawParser, function(request, response) {
+  router.get('/', function(request, response) {
     const { query } = request;
     const { shop } = query;
     console.log("^^^^^^^^^^^^ " + request)
