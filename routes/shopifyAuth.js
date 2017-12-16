@@ -1,6 +1,8 @@
 const express = require('express');
 const querystring = require('querystring');
 const crypto = require('crypto');
+const bodyParser = require('body-parser');
+
 
 module.exports = function createShopifyAuthRouter({
   host,
@@ -11,7 +13,10 @@ module.exports = function createShopifyAuthRouter({
   shopStore,
 }) {
   const router = express.Router();
+  const rawParser = bodyParser.raw({ type: '*/*' });
+  router.use(bodyParser.urlencoded({ extended: true }))
 
+  router.use(bodyParser.json())
   // This function initializes the Shopify OAuth Process
   router.get('/', function(request, response) {
     const { query } = request;
