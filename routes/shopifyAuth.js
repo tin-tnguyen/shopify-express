@@ -16,7 +16,7 @@ module.exports = function createShopifyAuthRouter({
   router.get('/', function(request, response) {
     const { query } = request;
     const { shop } = query;
-
+    console.log("^^^^^^^^^^^^ " + request)
     if (shop == null) {
       return response.status(400).send('Expected a shop query parameter');
     }
